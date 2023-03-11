@@ -23,7 +23,7 @@ public class ResumeEvaluatorController {
 	}
 
 	@PostMapping("/evaluateresume")
-	public List<ResumeResponse> evaluateResume(@RequestBody String name) {
+	public List<ResumeResponse> evaluateResume(@RequestBody String jobDescription) {
 		List<ResumeResponse> finalResponse = new ArrayList<>();
 
 		ResumeResponse firstResponse = new ResumeResponse("Sreekar", "Pappu", "abc@d.com", "7654567654");
