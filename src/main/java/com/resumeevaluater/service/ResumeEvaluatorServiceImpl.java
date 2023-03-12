@@ -3,14 +3,17 @@ package com.resumeevaluater.service;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
+import com.mongodb.client.gridfs.GridFSFindIterable;
+import com.mongodb.client.gridfs.model.GridFSFile;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.gridfs.GridFsOperations;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.stereotype.Component;
@@ -71,6 +74,15 @@ public class ResumeEvaluatorServiceImpl implements ResumeEvaluatorService {
 		}
 
 		return "Succesfully added " + count + " resumes.";
+	}
+
+	public List<GridFSFile> downloadResumesFromMongo() throws IOException {
+		GridFSFindIterable resumesIterable = template.find(new Query(Criteria.where("flag").is(false)));
+		List<GridFSFile> resumesList = new ArrayList<>();
+		for (GridFSFile file : resumesIterable.into(new ArrayList<>())) {
+			resumesList.add(file);
+		}
+		return resumesList;
 	}
 
 }
