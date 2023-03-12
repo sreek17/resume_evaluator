@@ -2,5 +2,7 @@
 /Users/sreekarpappu/Documents/Personal/hackathon/resume_evaluator/src/main/java/com/resumeevaluater/model/ResumeResponse.java
 /Users/sreekarpappu/Documents/Personal/hackathon/resume_evaluator/src/main/java/com/resumeevaluater/config/Config.java
 /Users/sreekarpappu/Documents/Personal/hackathon/resume_evaluator/src/main/java/com/resumeevaluater/service/ResumeEvaluatorServiceImpl.java
+/Users/sreekarpappu/Documents/Personal/hackathon/resume_evaluator/src/main/java/com/resumeevaluater/model/ResumeRepository.java
 /Users/sreekarpappu/Documents/Personal/hackathon/resume_evaluator/src/main/java/com/resumeevaluater/ResumeevaluaterApplication.java
 /Users/sreekarpappu/Documents/Personal/hackathon/resume_evaluator/src/main/java/com/resumeevaluater/service/ResumeEvaluatorService.java
+/Users/sreekarpappu/Documents/Personal/hackathon/resume_evaluator/src/main/java/com/resumeevaluater/model/Resumes.java
