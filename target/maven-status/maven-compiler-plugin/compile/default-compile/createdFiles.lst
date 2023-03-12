@@ -1,1 +1,8 @@
+com/resumeevaluater/config/Config.class
+com/resumeevaluater/controller/ResumeEvaluatorController.class
 com/resumeevaluater/ResumeevaluaterApplication.class
+com/resumeevaluater/model/ResumeResponse.class
+com/resumeevaluater/model/ResumeRepository.class
+com/resumeevaluater/service/ResumeEvaluatorServiceImpl.class
+com/resumeevaluater/service/ResumeEvaluatorService.class
+com/resumeevaluater/model/Resumes.class
