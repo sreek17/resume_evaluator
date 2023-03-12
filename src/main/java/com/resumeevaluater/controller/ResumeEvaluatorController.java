@@ -23,17 +23,13 @@ public class ResumeEvaluatorController {
 
 	@PostMapping("/addresume")
 	public ResponseEntity<String> addResume(@RequestParam("resumes") MultipartFile[] multipartFile) throws IOException {
-
-		// return new ResponseEntity<String>("Succesfully added 6 resumes",
-		// HttpStatusCode.valueOf(200));
 		return new ResponseEntity<String>(resumeEvaluatorService.addResumesToMongo(multipartFile),
 				HttpStatusCode.valueOf(200));
 
 	}
 
 	@PostMapping("/evaluateresume")
-	public List<ResumeResponse> evaluateResume(@RequestBody String jobDescription) {
-
+	public List<ResumeResponse> evaluateResume(@RequestBody String jobDescription) throws IOException {
 		return resumeEvaluatorService.getEvaluateResumeData(jobDescription);
 	}
 }

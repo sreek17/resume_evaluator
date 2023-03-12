@@ -13,6 +13,6 @@ public interface ResumeEvaluatorService {
 
 	public String addResumesToMongo(MultipartFile[] multipartFile) throws IOException;
 
-	public List<ResumeResponse> getEvaluateResumeData(String jobDescription);
+	public List<ResumeResponse> getEvaluateResumeData(String jobDescription) throws IOException;
 
 }
