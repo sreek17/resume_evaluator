@@ -28,7 +28,6 @@ import com.resumeevaluater.model.Usage;
 import com.resumeevaluater.util.EmailIdExtractor;
 import com.resumeevaluater.util.YesNoChecker;
 import org.apache.commons.io.IOUtils;
-import org.assertj.core.internal.Bytes;
 
 @Component
 public class ResumeEvaluatorServiceImpl implements ResumeEvaluatorService {
