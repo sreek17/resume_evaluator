@@ -9,10 +9,12 @@
         <module name="resume_evaluater" />
       </profile>
     </annotationProcessing>
+
     <bytecodeTargetLevel>
       <module name="resume_evaluater" target="11" />
       <module name="resume_evaluator" target="11" />
     </bytecodeTargetLevel>
+
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
