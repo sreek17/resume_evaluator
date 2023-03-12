@@ -132,7 +132,7 @@ public class ResumeEvaluatorServiceImpl implements ResumeEvaluatorService {
 	}
 
 	public List<GridFSFile> downloadResumesFromMongo() throws IOException {
-		GridFSFindIterable resumesIterable = template.find(new Query(Criteria.where("flag").is(false)));
+		GridFSFindIterable resumesIterable = template.find(new Query(Criteria.where("metadata.flag").is(false)));
 		List<GridFSFile> resumesList = new ArrayList<>();
 		for (GridFSFile file : resumesIterable.into(new ArrayList<>())) {
 			resumesList.add(file);
