@@ -11,6 +11,8 @@ import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.gridfs.GridFsOperations;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +25,12 @@ public class ResumeEvaluatorServiceImpl implements ResumeEvaluatorService {
 
 	@Autowired
 	ResumeRepository resumeRepository;
+
+	@Autowired
+	private GridFsTemplate template;
+
+	@Autowired
+	private GridFsOperations operations;
 
 	@Override
 	public List<ResumeResponse> getEvaluateResumeData(String jobDescription) {
@@ -48,20 +56,21 @@ public class ResumeEvaluatorServiceImpl implements ResumeEvaluatorService {
 	}
 
 	@Override
-	public String addResumesToMongo(MultipartFile[] multipartFile) {
+	public String addResumesToMongo(MultipartFile[] multipartFile) throws IOException {
 		int count = 0;
 		String emailID = "";
 		for (MultipartFile multipartFileSingle : multipartFile) {
-			emailID = getEmailIDFromPDFResume(multipartFileSingle);
-			resumeRepository.save(new Resumes(emailID, multipartFileSingle));
-			count++;
+			// emailID = getEmailIDFromPDFResume(multipartFileSingle);
+			Object fileID = template.store(multipartFileSingle.getInputStream(),
+					multipartFileSingle.getOriginalFilename(), multipartFileSingle.getContentType(), true);
+
+			if (fileID != null) {
+				count++;
+			}
+
 		}
 
 		return "Succesfully added " + count + " resumes.";
 	}
 
-	private String getEmailIDFromPDFResume(MultipartFile multipartFile) {
-
-		return null;
-	}
 }
